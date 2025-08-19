@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>MinerPi - Coletor de Pi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>💠 MinerPi 💠</h1>
+  <p>Tempo restante: <span id="tempo">60</span>s</p>
+  <p>Pi Coins coletadas: <span id="pontuacao">0</span></p>
+  
+  <div id="game-area"></div>
+  
+  <button onclick="iniciarJogo()">Iniciar Jogo</button>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+let pontuacao = 0;
+let tempo = 60;
+let intervaloTempo;
+let intervaloMoedas;
+
+function iniciarJogo() {
+  pontuacao = 0;
+  tempo = 60;
+  document.getElementById("pontuacao").textContent = pontuacao;
+  document.getElementById("tempo").textContent = tempo;
+
+  intervaloTempo = setInterval(() => {
+    tempo--;
+    document.getElementById("tempo").textContent = tempo;
+    if (tempo <= 0) encerrarJogo();
+  }, 1000);
+
+  intervaloMoedas = setInterval(criarMoeda, 800);
+}
+
+function encerrarJogo() {
+  clearInterval(intervaloTempo);
+  clearInterval(intervaloMoedas);
+  alert(`⛏️ Fim de jogo! Você coletou ${pontuacao} Pi Coins.`);
+  document.getElementById("game-area").innerHTML = '';
+}
+
+function criarMoeda() {
+  const gameArea = document.getElementById("game-area");
+  const moeda = document.createElement("div");
+  moeda.classList.add("moeda");
+
+  const x = Math.random() * (gameArea.clientWidth - 40);
+  const y = Math.random() * (gameArea.clientHeight - 40);
+  moeda.style.left = x + "px";
+  moeda.style.top = y + "px";
+
+  moeda.onclick = () => {
+    pontuacao++;
+    document.getElementById("pontuacao").textContent = pontuacao;
+    moeda.remove();
+  };
+
+  gameArea.appendChild(moeda);
+
+  setTimeout(() => moeda.remove(), 2000);
+}
